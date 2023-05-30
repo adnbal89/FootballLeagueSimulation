@@ -1,5 +1,14 @@
 package data.model
 
-data class Fixture(
-    val gameList<Game>
-)
+class Fixture() {
+    private val matches: MutableList<Match> = mutableListOf()
+
+    fun addMatch(match: Match) {
+        matches.add(match)
+    }
+
+    fun getMatches(): List<Match> {
+        return matches.toList()
+    }
+
+}

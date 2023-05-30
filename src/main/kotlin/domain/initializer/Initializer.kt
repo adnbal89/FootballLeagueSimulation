@@ -1,4 +1,5 @@
 package domain.initializer
 
-interface Initializer {
+interface Initializer<T> {
+    fun initialize(): T
 }

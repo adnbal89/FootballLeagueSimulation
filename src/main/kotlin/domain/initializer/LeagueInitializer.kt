@@ -1,4 +1,10 @@
 package domain.initializer
 
-class LeagueInitializer {
+import data.model.League
+
+class LeagueInitializer(private val league: League) : Initializer<League> {
+    override fun initialize(): League {
+
+        return league
+    }
 }

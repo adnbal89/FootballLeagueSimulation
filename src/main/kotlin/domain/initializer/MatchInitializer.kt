@@ -1,4 +1,15 @@
 package domain.initializer
 
-class MatchInitializer {
+import data.model.Match
+import data.model.Team
+import java.time.LocalDateTime
+
+class MatchInitializer(
+    private val homeTeam: Team,
+    private val awayTeam: Team,
+    private val dateTime: LocalDateTime
+) : Initializer<Match> {
+    override fun initialize(): Match {
+        return Match(homeTeam, awayTeam, dateTime)
+    }
 }

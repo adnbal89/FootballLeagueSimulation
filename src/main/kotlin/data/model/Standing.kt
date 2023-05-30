@@ -1,3 +1,6 @@
 package data.model
 
-data class Standing()
+data class Standing(
+    val team: Team,
+    val standingDetails: StandingDetails
+)

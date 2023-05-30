@@ -1,4 +1,5 @@
 package domain.runner
 
-interface Runner {
+interface Runner<T> {
+    fun run(): T
 }
