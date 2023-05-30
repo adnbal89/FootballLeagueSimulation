@@ -4,34 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd2a8204-24d8-4ae7-bfa1-8632f5570496" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="fd2a8204-24d8-4ae7-bfa1-8632f5570496" name="Changes" comment="Standing fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Fixture.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Fixture.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Group.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Group.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/League.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/League.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/LeagueLevel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/LeagueLevel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Match.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Match.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Player.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Score.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Score.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Stadium.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Stadium.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Standing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Standing.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/StandingDetails.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/StandingDetails.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Team.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Team.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/date/DateAdvancer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/date/DateAdvancer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/FixtureInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/FixtureInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/GroupInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/GroupInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/Initializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/Initializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/LeagueInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/LeagueInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/MatchInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/MatchInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/SquadInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/SquadInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/TeamInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/TeamInitializer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/runner/MatchRunner.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/runner/MatchRunner.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/runner/Runner.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/runner/Runner.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/score/ScoreRandomizer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/score/ScoreRandomizer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/util/Randomizer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/Randomizer.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +82,46 @@
       <option name="presentableId" value="Default" />
       <updated>1685294195175</updated>
     </task>
+    <task id="LOCAL-00001" summary="F">
+      <created>1685445377966</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685445377966</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Group and fixture fix.">
+      <created>1685448495028</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685448495028</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Standing fixed">
+      <created>1685462522797</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685462522797</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="F" />
+    <MESSAGE value="Group and fixture fix." />
+    <MESSAGE value="Standing fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Standing fixed" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

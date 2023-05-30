@@ -26,6 +26,9 @@ class Standing(
         val homeTeamStanding = findTeamStanding(homeTeam)
         val awayTeamStanding = findTeamStanding(awayTeam)
 
+        homeTeamStanding.playedMatchesCount++
+        awayTeamStanding.playedMatchesCount++
+
         if(homeGoals > awayGoals) {
             homeTeamStanding.winCount++
             awayTeamStanding.lostCount++
