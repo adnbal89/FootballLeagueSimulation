@@ -17,7 +17,7 @@ class FixtureInitializer(
             group.getTeams().forEachIndexed { index1, team1 ->
                 group.getTeams().forEachIndexed { index2, team2 ->
                     if (team1 != team2) {
-                        val match = Match(team1, team2, LocalDateTime.now(), Score())
+                        val match = Match(team1, team2, LocalDateTime.now(), Score(), group)
                         fixture.addMatch(match)
                     }
                 }

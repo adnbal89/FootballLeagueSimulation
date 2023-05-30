@@ -33,26 +33,28 @@ fun main() {
         Team("Lyon", "TR", "LYO", Stadium("ASY", "LYO", 50000), arrayListOf(), hashMapOf()),
     )
 
-    var groupA = Group("A")
-    var groupB = Group("B")
-    var groupC = Group("C")
-    var groupD = Group("D")
-    var groupE = Group("E")
 
-    val groupList = arrayListOf<Group>(groupA, groupB, groupC, groupD, groupE)
     val groupInitializer = GroupInitializer(teamList, 4)
-    
+    val groupList = groupInitializer.initialize()
+
     println(groupInitializer.initialize().iterator().forEach { group ->
-        group.getTeams().forEach {
-            println("group " + group.name + " " + it)
+        println(group.name)
+        group.getTeams().forEach { team ->
+            println(team.name)
         }
+        println()
     })
 
     val fixtureInitializer = FixtureInitializer(groupList)
 
-    fixtureInitializer.initialize().getMatches().iterator().forEach {
-        print("${it.homeTeam.name} - ${it.awayTeam.name}")
+    fixtureInitializer.initialize().getMatches().groupBy {
+        it.group
+    }.forEach { (t, u) ->
+        println(t.name)
+        u.forEach {
+            print("${it.homeTeam.name} - ${it.awayTeam.name}")
+            println()
+        }
         println()
     }
-
 }

@@ -1,7 +1,7 @@
 package data.model
 
 class Group(
-    val name: String,
+    val name: String
 ) {
     private val teams: MutableList<Team> = mutableListOf()
 
