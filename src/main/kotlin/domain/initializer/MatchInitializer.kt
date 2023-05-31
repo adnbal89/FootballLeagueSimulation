@@ -11,7 +11,7 @@ class MatchInitializer(
     private val dateTime: LocalDateTime,
     private val group: Group
 ) : Initializer<Match> {
-    override fun initialize(): Match {
-        return Match(homeTeam, awayTeam, dateTime, group = group)
+    override fun initialize(name: String): Match {
+        return Match(homeTeam, awayTeam, dateTime)
     }
 }

@@ -1,34 +1,52 @@
 package domain.initializer
 
 import data.model.Group
+import data.model.Standing
 import data.model.Team
+import domain.util.GroupMatchGenerator
 
-class GroupInitializer(private val teamList: List<Team>, private val teamCountPerGroup: Int) :
-    Initializer<List<Group>> {
+class GroupInitializer :
+    Initializer<Group> {
 
-    override fun initialize(): List<Group> {
-        var tempTeamList = teamList.toMutableList()
+    private lateinit var matchGenerator: GroupMatchGenerator
+    private lateinit var standing: Standing
+    private lateinit var group: Group
+    private lateinit var teamList: List<Team>
 
-        val groupNamesList = GroupNames.values().take(teamList.size.div(teamCountPerGroup))
-        val groupList = mutableListOf<Group>()
+    override fun initialize(name: String): Group {
+        group = Group(name)
+        standing = Standing()
 
-        groupNamesList.forEach {
-            var group = Group(it.toString())
+        matchGenerator = GroupMatchGenerator()
 
-            while (group.getTeams().size < teamCountPerGroup) {
-                val randomTeam = tempTeamList.random()
-                group.addTeam(randomTeam)
-                tempTeamList.remove(randomTeam)
-            }
-            groupList.add(group)
+        val fixture = matchGenerator.generateMatches(teamList)
+
+        teamList.forEach {
+            group.addTeam(it)
+            standing.addTeam(it)
         }
+        group.setFixture(fixture)
+        group.setStanding(standing)
 
-        return groupList
+        return group
+    }
+
+    fun setTeamList(teamList: List<Team>) {
+        this.teamList = teamList
     }
 }
 
-enum class GroupNames {
-    A, B, C, D, E, F, G, H, I, J, K, L
-}
 
+/*val groupList = mutableListOf<Group>()
 
+//initialize group members and create group
+groupNamesList.forEach {
+    var group = Group(it.toString())
+
+    while (group.getTeams().size < teamCountPerGroup) {
+        val randomTeam = randomPicker.pickRandomlyFromList(tempTeamList)
+        group.addTeam(randomTeam)
+        tempTeamList.remove(randomTeam)
+    }
+    groupList.add(group)
+}*/

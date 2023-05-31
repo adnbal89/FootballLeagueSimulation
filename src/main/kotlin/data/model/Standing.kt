@@ -1,8 +1,6 @@
 package data.model
 
-class Standing(
-    val group: Group
-) {
+class Standing {
     private val teamStandings: MutableList<TeamStanding> = mutableListOf()
 
     fun addTeam(team: Team) {
@@ -22,22 +20,22 @@ class Standing(
         }
     }
 
-    fun updateMatchResult(homeTeam: Team, awayTeam: Team, homeGoals:Int, awayGoals:Int){
+    fun updateMatchResult(homeTeam: Team, awayTeam: Team, homeGoals: Int, awayGoals: Int) {
         val homeTeamStanding = findTeamStanding(homeTeam)
         val awayTeamStanding = findTeamStanding(awayTeam)
 
         homeTeamStanding.playedMatchesCount++
         awayTeamStanding.playedMatchesCount++
 
-        if(homeGoals > awayGoals) {
+        if (homeGoals > awayGoals) {
             homeTeamStanding.winCount++
             awayTeamStanding.lostCount++
 
-        }else if(awayGoals > homeGoals){
+        } else if (awayGoals > homeGoals) {
             homeTeamStanding.lostCount++
             awayTeamStanding.winCount++
 
-        }else {
+        } else {
             homeTeamStanding.drawCount++
             awayTeamStanding.drawCount++
 

@@ -4,12 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd2a8204-24d8-4ae7-bfa1-8632f5570496" name="Changes" comment="Standing fixed">
+    <list default="true" id="fd2a8204-24d8-4ae7-bfa1-8632f5570496" name="Changes" comment="Match Runner implemented.">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/Constants.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/GroupMatchCombinator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/GroupNames.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/RandomPicker.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/TeamRandomPicker.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Group.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Group.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/League.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/League.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Match.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Match.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Standing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Standing.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/runner/MatchRunner.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/runner/MatchRunner.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/runner/Runner.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/runner/Runner.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Team.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Team.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/FixtureInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/FixtureInitializer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/GroupInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/GroupInitializer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/Initializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/Initializer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/LeagueInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/LeagueInitializer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/MatchInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/MatchInitializer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/SquadInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/SquadInitializer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/TeamInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/TeamInitializer.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +39,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin File" />
-        <option value="Kotlin Enum" />
         <option value="Kotlin Data Class" />
         <option value="Class" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin Enum" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -44,32 +58,34 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="data.model" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="ScoreRandomizerKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="domain.score.ScoreRandomizerKt" />
+    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainKt" />
       <module name="FootballLeagueSimulation.main" />
+      <shortenClasspath name="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotlin.ScoreRandomizerKt" />
+        <item itemvalue="Kotlin.MainKt" />
       </list>
     </recent_temporary>
   </component>
@@ -103,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685462522797</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Match Runner implemented.">
+      <created>1685477652873</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685477652873</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -121,7 +144,8 @@
     <MESSAGE value="F" />
     <MESSAGE value="Group and fixture fix." />
     <MESSAGE value="Standing fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Standing fixed" />
+    <MESSAGE value="Match Runner implemented." />
+    <option name="LAST_COMMIT_MESSAGE" value="Match Runner implemented." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

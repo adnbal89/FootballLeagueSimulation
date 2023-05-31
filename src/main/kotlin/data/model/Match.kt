@@ -7,7 +7,6 @@ data class Match(
     val awayTeam: Team,
     val date: LocalDateTime,
     var score: Score = Score(),
-    var group: Group
 ) {
     val stadium: Stadium = homeTeam.stadium
 }
