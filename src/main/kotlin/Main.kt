@@ -1,17 +1,23 @@
 import data.model.Group
+import data.model.QualifyingStage
 import data.model.Team
 import domain.date.DateAdvancer
 import domain.initializer.GroupInitializer
+import domain.initializer.QualifyingInitializer
 import domain.runner.MatchRunner
+import domain.score.QualifierCalculator
 import domain.util.Constants
 import domain.util.GroupNames
+import domain.util.QualifyingNames
 import java.util.*
+import kotlin.collections.HashMap
 
 fun main() {
     val groupCount = 5
 
     val dateAdvancer = DateAdvancer(Calendar.getInstance().time)
     println(dateAdvancer.advanceDate(2))
+
     val matchRunner = MatchRunner()
 
     var tempTeamList = Team.teamList.toMutableList()
@@ -38,7 +44,7 @@ fun main() {
     })
 
 
-    //GROUP STANDING OVERVIEW
+    //GROUP STANDING OVERVIEW BEFORE MATCHES PLAYED
     groupList.forEach {
         println()
         println(it.name)
@@ -48,6 +54,7 @@ fun main() {
         }
     }
 
+    //GROUP FIXTURE OVERVIEW
     groupList.forEach { group ->
         println()
         println(group.name)
@@ -56,6 +63,7 @@ fun main() {
         }
     }
 
+    //GROUP MATCHES RUNNING
     groupList.forEach { group ->
         group.getFixture().getMatches().forEach { match ->
             match.score = matchRunner.run(match).score
@@ -73,6 +81,66 @@ fun main() {
 
         }
     }
+
+
+    //ON TO QUALIFYING STAGE
+    val last16QualifiersList = mutableListOf<Team>()
+
+    groupList.forEach { group ->
+        val qualifiedTeam1 = group.getStanding().getTeamStandings()[0].team
+        val qualifiedTeam2 = group.getStanding().getTeamStandings()[1].team
+
+        last16QualifiersList.add(qualifiedTeam1)
+        last16QualifiersList.add(qualifiedTeam2)
+    }
+    println()
+    println("Qualifiers")
+    last16QualifiersList.forEach {
+        println(it.name)
+    }
+
+    val qualifyingInitializer = QualifyingInitializer()
+    qualifyingInitializer.setTeamList(last16QualifiersList)
+    val qualifyingStage = qualifyingInitializer.initialize(QualifyingNames.Last_16.name)
+
+    println()
+    println(qualifyingStage.getStageName())
+    qualifyingStage.getFixture().getMatches().forEach {
+        println(" ${it.homeTeam.name}  -  ${it.awayTeam.name}")
+
+    }
+
+    groupList.forEach { group ->
+        qualifyingStage.getFixture().getMatches().forEach { match ->
+            match.score = matchRunner.run(match).score
+        }
+    }
+
+    println()
+    println("Scores")
+
+    var tempQualifierMatches = qualifyingStage.getFixture().getMatches().toMutableList()
+    val qualifierCalculator = QualifierCalculator()
+    var qualifiedTeams = mutableListOf<Team>()
+
+    while (tempQualifierMatches.isNotEmpty()){
+
+        qualifiedTeams.add( qualifierCalculator.calculateQualifiedTeam(tempQualifierMatches.take(2)) )
+        tempQualifierMatches.removeAll(tempQualifierMatches.take(2))
+    }
+
+    qualifyingStage.getFixture().getMatches().forEach { match ->
+        println("${match.homeTeam.name} - ${match.awayTeam.name} : ${match.score.homeGoalCount} - ${match.score.awayGoalCount}" )
+    }
+
+    println()
+    println("Qualified to Quarter Finals")
+    qualifiedTeams.forEach { team ->
+        println("${team.name} " )
+
+    }
+
+
 
 
 }

@@ -4,26 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd2a8204-24d8-4ae7-bfa1-8632f5570496" name="Changes" comment="Match Runner implemented.">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/Constants.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/GroupMatchCombinator.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/GroupNames.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/RandomPicker.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/TeamRandomPicker.kt" afterDir="false" />
+    <list default="true" id="fd2a8204-24d8-4ae7-bfa1-8632f5570496" name="Changes" comment="Project refactoring completed.">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/QualifyingStage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/QualifyingInitializer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/score/QualifierCalculator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/QualifyingMatchGenerator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/QualifyingNames.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Group.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Group.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/League.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/League.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Match.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Match.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Standing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Standing.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Team.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Team.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/FixtureInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/FixtureInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/GroupInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/GroupInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/Initializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/Initializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/LeagueInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/LeagueInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/MatchInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/MatchInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/SquadInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/SquadInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/TeamInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/TeamInitializer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/util/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/Constants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/util/GroupMatchCombinator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/GroupMatchGenerator.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +31,9 @@
       <list>
         <option value="Kotlin File" />
         <option value="Kotlin Data Class" />
-        <option value="Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Enum" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -126,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685477652873</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Project refactoring completed.">
+      <created>1685546492523</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685546492523</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,9 +143,19 @@
     <MESSAGE value="Group and fixture fix." />
     <MESSAGE value="Standing fixed" />
     <MESSAGE value="Match Runner implemented." />
-    <option name="LAST_COMMIT_MESSAGE" value="Match Runner implemented." />
+    <MESSAGE value="Project refactoring completed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Project refactoring completed." />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/domain/score/QualifierCalculator.kt</url>
+          <line>14</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="JetRunConfigurationType">
         <watch expression="allTeams.size" language="kotlin" />

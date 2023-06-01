@@ -31,6 +31,19 @@ data class Team(
             Team("Club Brugge", "BEL", "CBU", Stadium("ASY", "BRU", 50000), arrayListOf(), hashMapOf()),
             Team("PSGermain", "PSG", "PSG", Stadium("PAR", "IST", 50000), arrayListOf(), hashMapOf()),
             Team("Lyon", "TR", "LYO", Stadium("ASY", "LYO", 50000), arrayListOf(), hashMapOf()),
+
+            Team("Eintracht Frankfurt", "GER", "EIF", Stadium("ASY", "FRN", 50000), arrayListOf(), hashMapOf()),
+            Team("A Madrid", "ESP", "MAD", Stadium("DOR", "MAD", 50000), arrayListOf(), hashMapOf()),
+            Team("Sevilla", "ESP", "SEV", Stadium("ASY", "SEV", 50000), arrayListOf(), hashMapOf()),
+            Team("Salzburg", "AUT", "SAL", Stadium("ASY", "AUT", 50000), arrayListOf(), hashMapOf()),
+            Team("T Hotspur", "ENG", "TOT", Stadium("ASY", "ENG", 50000), arrayListOf(), hashMapOf()),
+            Team("Napoli", "ITA", "NAP", Stadium("ASY", "ITA", 50000), arrayListOf(), hashMapOf()),
+            Team("Benfica", "POR", "BEN", Stadium("ASY", "BEN", 50000), arrayListOf(), hashMapOf()),
+            Team("Rangers", "SCO", "RAN", Stadium("ASY", "RAN", 50000), arrayListOf(), hashMapOf()),
+            Team("Celtic", "SCO", "CEL", Stadium("ASY", "CEL", 50000), arrayListOf(), hashMapOf()),
+            Team("Copenhagen", "DEN", "COP", Stadium("ASY", "COP", 50000), arrayListOf(), hashMapOf()),
+            Team("Marseille", "FRA", "MAR", Stadium("PFR", "MAR", 50000), arrayListOf(), hashMapOf()),
+            Team("V Plzen", "CZE", "VPL", Stadium("ASY", "PLZ", 50000), arrayListOf(), hashMapOf()),
         )
     }
 }
