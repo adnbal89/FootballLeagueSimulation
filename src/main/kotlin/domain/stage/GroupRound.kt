@@ -1,23 +1,29 @@
 package domain.stage
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.MatchGenerator
 import data.model.Fixture
 import data.model.Match
 import data.model.Team
+import domain.runner.MatchRunner
 import domain.util.Constants
 import domain.util.DrawPot
+import domain.util.GroupFixtureGenerator
 import domain.util.GroupNames
 import java.util.*
 
 class GroupRound : GroupStage {
-    private var groups: Map<GroupNames, List<Team>>
+    private lateinit var groups: List<Group>
     private val drawPot: DrawPot
+    private val matchRunner: MatchRunner
+    private lateinit var fixtureGenerator: GroupFixtureGenerator
+    private lateinit var groupStageFixture: Fixture
 
     init {
-        groups = EnumMap(GroupNames::class.java)
         drawPot = DrawPot()
+        matchRunner = MatchRunner()
     }
 
-    override fun getGroups(): Map<GroupNames, List<Team>> {
+    override fun getGroups(): List<Group> {
         return groups
     }
 
@@ -25,12 +31,12 @@ class GroupRound : GroupStage {
         TODO("Not yet implemented")
     }
 
+
     override fun simulateDraw(teamList: List<Team>) {
         this.groups = drawPot.simulateDraw(teamList, Constants.GROUP_COUNT, Constants.TEAM_COUNT_PER_GROUP)
     }
 
     override fun simulate() {
-        TODO("Not yet implemented")
     }
 
     override fun isCompleted(): Boolean {
@@ -41,11 +47,25 @@ class GroupRound : GroupStage {
         TODO("Not yet implemented")
     }
 
-    override fun generateFixtures(): Fixture {
-        TODO("Not yet implemented")
+    override fun generateFixtures() {
+        fixtureGenerator = GroupFixtureGenerator()
+
+        groups.forEach {
+            val teams = it.getTeams()
+            val fixture = fixtureGenerator.generateFixture(teams)
+            it.setFixture(fixture)
+        }
     }
 
     override fun getQualifiedTeams(): List<Team> {
         TODO("Not yet implemented")
+    }
+
+    override fun getFixtureByGroupName(groupName: String): Fixture {
+        val groupStageFixture = groups.first {
+            it.name == groupName
+        }.getFixture()
+
+        return groupStageFixture
     }
 }

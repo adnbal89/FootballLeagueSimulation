@@ -1,28 +1,24 @@
-import domain.stage.Group
 import data.model.Team
-import domain.date.DateAdvancer
-import domain.initializer.GroupInitializer
-import domain.initializer.QualifyingInitializer
-import domain.runner.MatchRunner
-import domain.score.QualifierCalculator
-import domain.util.Constants
+import domain.stage.GroupRound
 import domain.util.DrawPot
-import domain.util.GroupNames
-import domain.util.QualifyingNames
-import java.util.*
 
 fun main() {
     var tempTeamList = Team.teamList.toMutableList()
+    val groupStage = GroupRound()
+    groupStage.simulateDraw(tempTeamList)
+    groupStage.generateFixtures()
 
-    val dP = DrawPot()
-    val map = dP.simulateDraw(tempTeamList, 8,4)
-    map.entries.forEach {
-        println( it.key )
-        it.value.forEach {
-            println(it.name)
+
+    groupStage.getGroups().forEach {group ->
+        println(group.name)
+        group.getFixture().getMatches().forEach { match ->
+            println("${match.homeTeam.name} - ${match.awayTeam.name}")
         }
-
     }
+
+
+
+
 
     /*val groupCount = 5
 

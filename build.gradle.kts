@@ -13,10 +13,9 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
+    testImplementation("junit:junit:4.13.1")
+    testImplementation("junit:junit:4.13.1")
+    testImplementation("junit:junit:4.13.1")
 }
 
 tasks.withType<KotlinCompile> {

@@ -1,11 +1,12 @@
 package domain.stage
 
+import data.model.Fixture
 import data.model.Team
 import domain.util.GroupNames
 
 interface GroupStage : Stage {
-    fun getGroups(): Map<GroupNames, List<Team>>
+    fun getGroups(): List<Group>
     fun updateStandings()
-    fun simulateDraw(teamList: List<Team>) // draw simulation
+    fun getFixtureByGroupName(groupName: String): Fixture
 
 }

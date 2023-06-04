@@ -1,7 +1,6 @@
 package domain.stage
 
 import data.model.Fixture
-import data.model.Match
 import data.model.Standing
 import data.model.Team
 
@@ -18,8 +17,8 @@ class Group(val name: String) {
         teams.remove(team)
     }
 
-    fun setAllTeams(teamsList: MutableList<Team>){
-        this.teams =  teamsList
+    fun setAllTeams(teamsList: MutableList<Team>) {
+        this.teams = teamsList
     }
 
     fun getTeams(): List<Team> {
@@ -34,13 +33,13 @@ class Group(val name: String) {
         return standing
     }
 
-    /*fun getFixture(): Fixture {
+    fun getFixture(): Fixture {
         return fixture
     }
 
     fun setFixture(fixture: Fixture) {
         this.fixture = fixture
-    }*/
+    }
 
     fun getGroupName(): String {
         return name

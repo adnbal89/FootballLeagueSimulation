@@ -1,27 +1,27 @@
 package domain.util
 
 import data.model.Team
+import domain.stage.Group
 
 class DrawPot {
-    fun simulateDraw(teamList: List<Team>, groupCount: Int, teamCountPerGroup: Int): Map<GroupNames, List<Team>> {
-        val groupTeamMap = HashMap<GroupNames, List<Team>>()
-
+    fun simulateDraw(teamList: List<Team>, groupCount: Int, teamCountPerGroup: Int): List<Group> {
+        val groupList = mutableListOf<Group>()
         val tempTeamList = teamList.toMutableList()
 
-            GroupNames.values().take(groupCount).forEach { groupName ->
-                val drawnTeamList = mutableListOf<Team>()
-                for (i in 0 until teamCountPerGroup) {
-                    val pickedTeam = tempTeamList.random()
-                    drawnTeamList.add(pickedTeam)
-                    //to ensure singularity.
-                    tempTeamList.remove(pickedTeam)
-                }
+        GroupNames.values().take(groupCount).forEach { groupName ->
+            val group = Group(name = groupName.name)
 
-                groupTeamMap[groupName] = drawnTeamList
+            for (i in 0 until teamCountPerGroup) {
+                val pickedTeam = tempTeamList.random()
+                group.addTeam(pickedTeam)
+                //to ensure singularity.
+                tempTeamList.remove(pickedTeam)
             }
 
+            groupList.add(group)
+        }
 
-        return groupTeamMap
+        return groupList
     }
 
 }

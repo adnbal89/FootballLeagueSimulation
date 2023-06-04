@@ -1,8 +1,8 @@
 package domain.initializer
 
-import domain.stage.Group
 import data.model.League
 import data.model.LeagueLevel
+import domain.stage.Group
 
 class LeagueInitializer(
     private val level: LeagueLevel,

@@ -25,11 +25,15 @@ class QuarterFinal : KnockoutStage {
         TODO("Not yet implemented")
     }
 
-    override fun generateFixtures(): Fixture {
+    override fun generateFixtures() {
         TODO("Not yet implemented")
     }
 
     override fun getQualifiedTeams(): List<Team> {
+        TODO("Not yet implemented")
+    }
+
+    override fun simulateDraw(teamList: List<Team>) {
         TODO("Not yet implemented")
     }
 }

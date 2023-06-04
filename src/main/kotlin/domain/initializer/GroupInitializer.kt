@@ -1,14 +1,14 @@
 package domain.initializer
 
-import domain.stage.Group
 import data.model.Standing
 import data.model.Team
-import domain.util.GroupMatchGenerator
+import domain.stage.Group
+import domain.util.GroupFixtureGenerator
 
 class GroupInitializer :
     Initializer<Group> {
 
-    private lateinit var matchGenerator: GroupMatchGenerator
+    private lateinit var matchGenerator: GroupFixtureGenerator
     private lateinit var standing: Standing
     private lateinit var group: Group
     private lateinit var teamList: List<Team>
@@ -17,9 +17,9 @@ class GroupInitializer :
         group = Group(name)
         standing = Standing()
 
-        matchGenerator = GroupMatchGenerator()
+        matchGenerator = GroupFixtureGenerator()
 
-        val fixture = matchGenerator.generateMatches(teamList)
+        val fixture = matchGenerator.generateFixture(teamList)
 
         teamList.forEach {
             group.addTeam(it)

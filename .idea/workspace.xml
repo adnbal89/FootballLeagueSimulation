@@ -4,28 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd2a8204-24d8-4ae7-bfa1-8632f5570496" name="Changes" comment="Qualifiers Added">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/Final.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/GroupRound.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/GroupStage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/KnockoutStage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/PlayOffRound.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/PreliminaryRound.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/QuarterFinal.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/SemiFinal.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/Stage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/DrawPot.kt" afterDir="false" />
+    <list default="true" id="fd2a8204-24d8-4ae7-bfa1-8632f5570496" name="Changes" comment="League stages refactored.">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/league/ChampionsLeage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/League.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/Generator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/domain/stage/GroupRoundTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/domain/stage/LeagueTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Group.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/Group.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/League.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/League.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/Fixture.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/Fixture.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/data/model/QualifyingStage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/data/model/QualifyingStage.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/GroupInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/GroupInitializer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/LeagueInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/LeagueInitializer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/MatchInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/MatchInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/QualifyingInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/initializer/QualifyingInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/util/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/Constants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/util/QualifyingMatchGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/QualifyingMatchGenerator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/stage/Final.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/Final.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/stage/Group.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/Group.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/stage/GroupRound.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/GroupRound.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/stage/GroupStage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/GroupStage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/stage/PlayOffRound.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/PlayOffRound.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/stage/PreliminaryRound.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/PreliminaryRound.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/stage/QuarterFinal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/QuarterFinal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/stage/SemiFinal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/SemiFinal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/stage/Stage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/stage/Stage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/util/DrawPot.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/DrawPot.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/domain/util/GroupMatchGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/domain/util/GroupFixtureGenerator.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +47,9 @@
         <option value="Kotlin Data Class" />
         <option value="Kotlin Enum" />
         <option value="Class" />
-        <option value="Kotlin Interface" />
+        <option value="JUnit4 Test Class" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -65,6 +69,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -72,14 +78,112 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="data.model" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="domain.stage" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="domain.stage" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.GroupRoundTest">
+    <configuration name="GroupRoundTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;domain.stage.GroupRoundTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GroupRoundTest.simulateDraw" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;domain.stage.GroupRoundTest.simulateDraw&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GroupRoundTest.simulateDrawTeamSizePerGroupIsCorrect" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;domain.stage.GroupRoundTest.simulateDrawTeamSizePerGroupIsCorrect&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="LeagueTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;domain.stage.LeagueTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainKt" />
       <module name="FootballLeagueSimulation.main" />
@@ -90,6 +194,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.LeagueTest" />
+        <item itemvalue="Gradle.GroupRoundTest.simulateDraw" />
+        <item itemvalue="Gradle.GroupRoundTest" />
+        <item itemvalue="Gradle.GroupRoundTest.simulateDrawTeamSizePerGroupIsCorrect" />
         <item itemvalue="Kotlin.MainKt" />
       </list>
     </recent_temporary>
@@ -145,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685624224658</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="League stages refactored.">
+      <created>1685860805058</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685860805058</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -166,7 +281,8 @@
     <MESSAGE value="Match Runner implemented." />
     <MESSAGE value="Project refactoring completed." />
     <MESSAGE value="Qualifiers Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Qualifiers Added" />
+    <MESSAGE value="League stages refactored." />
+    <option name="LAST_COMMIT_MESSAGE" value="League stages refactored." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -183,7 +299,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/domain/util/DrawPot.kt</url>
-          <line>13</line>
+          <line>14</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
@@ -193,5 +309,8 @@
         <watch expression="allTeams.size" language="kotlin" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FootballLeagueSimulation$GroupRoundTest_simulateDraw.ic" NAME="GroupRoundTest.simulateDraw Coverage Results" MODIFIED="1685861727575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

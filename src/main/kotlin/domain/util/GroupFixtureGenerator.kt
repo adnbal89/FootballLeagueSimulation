@@ -6,9 +6,9 @@ import data.model.Score
 import data.model.Team
 import java.time.LocalDateTime
 
-class GroupMatchGenerator {
+class GroupFixtureGenerator : FixtureGenerator {
     private lateinit var fixture: Fixture
-    fun generateMatches(list: List<Team>): Fixture {
+    override fun generateFixture(list: List<Team>): Fixture {
         fixture = Fixture()
 
         list.forEachIndexed { index1, team1 ->

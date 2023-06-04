@@ -8,7 +8,7 @@ class Fixture() {
     }
 
     fun getMatches(): List<Match> {
-        return matches.toList()
+        return matches
     }
 
 }

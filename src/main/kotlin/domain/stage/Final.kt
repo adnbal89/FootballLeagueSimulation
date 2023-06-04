@@ -4,7 +4,7 @@ import data.model.Fixture
 import data.model.Match
 import data.model.Team
 
-class Final: KnockoutStage {
+class Final : KnockoutStage {
     override fun drawKnockoutPairings() {
         TODO("Not yet implemented")
     }
@@ -25,11 +25,15 @@ class Final: KnockoutStage {
         TODO("Not yet implemented")
     }
 
-    override fun generateFixtures(): Fixture {
+    override fun generateFixtures() {
         TODO("Not yet implemented")
     }
 
     override fun getQualifiedTeams(): List<Team> {
+        TODO("Not yet implemented")
+    }
+
+    override fun simulateDraw(teamList: List<Team>) {
         TODO("Not yet implemented")
     }
 }
