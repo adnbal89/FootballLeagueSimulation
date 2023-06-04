@@ -1,6 +1,6 @@
 package domain.initializer
 
-import data.model.Group
+import domain.stage.Group
 import data.model.Standing
 import data.model.Team
 import domain.util.GroupMatchGenerator
@@ -25,7 +25,7 @@ class GroupInitializer :
             group.addTeam(it)
             standing.addTeam(it)
         }
-        group.setFixture(fixture)
+        //group.setFixture(fixture)
         group.setStanding(standing)
 
         return group

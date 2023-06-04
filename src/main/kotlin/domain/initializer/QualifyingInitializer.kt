@@ -3,7 +3,6 @@ package domain.initializer
 import data.model.Fixture
 import data.model.QualifyingStage
 import data.model.Team
-import domain.util.GroupMatchGenerator
 import domain.util.QualifyingMatchGenerator
 
 class QualifyingInitializer : Initializer<QualifyingStage> {

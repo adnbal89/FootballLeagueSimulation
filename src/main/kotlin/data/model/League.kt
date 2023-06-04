@@ -1,11 +1,17 @@
 package data.model
 
+import domain.stage.Group
 import domain.util.GroupNames
+import domain.util.QualifyingNames
 
 class League {
     private lateinit var name: String
     private lateinit var level: Enum<LeagueLevel>
     private val groupList: MutableList<Group> = mutableListOf()
+    private val qualifyingLast16Stage: QualifyingStage = QualifyingStage(QualifyingNames.Last_16.name)
+    private val qualifyingQuarterFinalStage: QualifyingStage = QualifyingStage(QualifyingNames.Quarter_Final.name)
+    private val qualifyingSemiFinalStage: QualifyingStage = QualifyingStage(QualifyingNames.Semi_Final.name)
+    private val qualifyingFinalStage: QualifyingStage = QualifyingStage(QualifyingNames.Final.name)
 
 
     fun getName(): String {

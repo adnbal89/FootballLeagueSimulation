@@ -1,6 +1,6 @@
 package domain.initializer
 
-import data.model.Group
+import domain.stage.Group
 import data.model.League
 import data.model.LeagueLevel
 

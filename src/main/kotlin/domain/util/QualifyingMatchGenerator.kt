@@ -1,6 +1,5 @@
 package domain.util
 
-import data.model.Fixture
 import data.model.Match
 import data.model.Score
 import data.model.Team

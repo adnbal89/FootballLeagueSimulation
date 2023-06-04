@@ -1,6 +1,8 @@
 package data.model
 
-class QualifyingStage(private val name: String) {
+import domain.stage.Stage
+
+class QualifyingStage(private val name: String)  {
 
     private val teams: MutableList<Team> = mutableListOf()
     private lateinit var fixture: Fixture

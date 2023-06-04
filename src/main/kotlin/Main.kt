@@ -1,5 +1,4 @@
-import data.model.Group
-import data.model.QualifyingStage
+import domain.stage.Group
 import data.model.Team
 import domain.date.DateAdvancer
 import domain.initializer.GroupInitializer
@@ -7,13 +6,25 @@ import domain.initializer.QualifyingInitializer
 import domain.runner.MatchRunner
 import domain.score.QualifierCalculator
 import domain.util.Constants
+import domain.util.DrawPot
 import domain.util.GroupNames
 import domain.util.QualifyingNames
 import java.util.*
-import kotlin.collections.HashMap
 
 fun main() {
-    val groupCount = 5
+    var tempTeamList = Team.teamList.toMutableList()
+
+    val dP = DrawPot()
+    val map = dP.simulateDraw(tempTeamList, 8,4)
+    map.entries.forEach {
+        println( it.key )
+        it.value.forEach {
+            println(it.name)
+        }
+
+    }
+
+    /*val groupCount = 5
 
     val dateAdvancer = DateAdvancer(Calendar.getInstance().time)
     println(dateAdvancer.advanceDate(2))
@@ -85,6 +96,9 @@ fun main() {
 
     //ON TO QUALIFYING STAGE
     val last16QualifiersList = mutableListOf<Team>()
+    val QuarterFİnalQualifiersList = mutableListOf<Team>()
+    val SemiFinalQualifiersList = mutableListOf<Team>()
+    val FinalQualifiersList = mutableListOf<Team>()
 
     groupList.forEach { group ->
         val qualifiedTeam1 = group.getStanding().getTeamStandings()[0].team
@@ -123,24 +137,22 @@ fun main() {
     val qualifierCalculator = QualifierCalculator()
     var qualifiedTeams = mutableListOf<Team>()
 
-    while (tempQualifierMatches.isNotEmpty()){
+    while (tempQualifierMatches.isNotEmpty()) {
 
-        qualifiedTeams.add( qualifierCalculator.calculateQualifiedTeam(tempQualifierMatches.take(2)) )
+        qualifiedTeams.add(qualifierCalculator.calculateQualifiedTeam(tempQualifierMatches.take(2)))
         tempQualifierMatches.removeAll(tempQualifierMatches.take(2))
     }
 
     qualifyingStage.getFixture().getMatches().forEach { match ->
-        println("${match.homeTeam.name} - ${match.awayTeam.name} : ${match.score.homeGoalCount} - ${match.score.awayGoalCount}" )
+        println("${match.homeTeam.name} - ${match.awayTeam.name} : ${match.score.homeGoalCount} - ${match.score.awayGoalCount}")
     }
 
     println()
     println("Qualified to Quarter Finals")
     qualifiedTeams.forEach { team ->
-        println("${team.name} " )
+        println("${team.name} ")
 
     }
 
-
-
-
+*/
 }

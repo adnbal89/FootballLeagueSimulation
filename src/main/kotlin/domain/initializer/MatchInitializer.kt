@@ -1,6 +1,6 @@
 package domain.initializer
 
-import data.model.Group
+import domain.stage.Group
 import data.model.Match
 import data.model.Team
 import java.time.LocalDateTime
