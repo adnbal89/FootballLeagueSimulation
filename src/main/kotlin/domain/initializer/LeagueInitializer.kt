@@ -10,13 +10,8 @@ class LeagueInitializer(
 ) :
     Initializer<League> {
     override fun initialize(name: String): League {
-        val league = League()
+        val league = League(name, level)
 
-        league.setName(name)
-        league.setLevel(level)
-        groupList.forEach { group ->
-            league.addGroup(group)
-        }
 
         return league
     }

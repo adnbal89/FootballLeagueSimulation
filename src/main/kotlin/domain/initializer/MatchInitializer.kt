@@ -2,7 +2,6 @@ package domain.initializer
 
 import data.model.Match
 import data.model.Team
-import domain.stage.Group
 import java.time.LocalDateTime
 
 class MatchInitializer(

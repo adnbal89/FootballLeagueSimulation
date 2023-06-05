@@ -1,5 +1,6 @@
 package domain.util
 
+import data.model.Standing
 import data.model.Team
 import domain.stage.Group
 
@@ -10,14 +11,16 @@ class DrawPot {
 
         GroupNames.values().take(groupCount).forEach { groupName ->
             val group = Group(name = groupName.name)
+            val groupStanding = Standing()
 
             for (i in 0 until teamCountPerGroup) {
                 val pickedTeam = tempTeamList.random()
                 group.addTeam(pickedTeam)
+                groupStanding.addTeam(pickedTeam)
                 //to ensure singularity.
                 tempTeamList.remove(pickedTeam)
             }
-
+            group.setStanding(groupStanding)
             groupList.add(group)
         }
 

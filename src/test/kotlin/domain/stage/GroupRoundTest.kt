@@ -2,7 +2,6 @@ package domain.stage
 
 import data.model.Team
 import domain.util.Constants
-import domain.util.GroupNames
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -24,7 +23,10 @@ class GroupRoundTest {
     @Test
     fun simulateDrawTeamSizePerGroupIsCorrect() {
         groupRound.simulateDraw(tempTeamList)
-        assertEquals(groupRound.getGroups().size, Constants.TEAM_COUNT_PER_GROUP)
+
+        groupRound.getGroups().forEach {
+            assertEquals(it.getTeams().size, Constants.TEAM_COUNT_PER_GROUP)
+        }
     }
 
     @Test

@@ -1,6 +1,5 @@
 package domain.stage
 
-import data.model.Fixture
 import data.model.Match
 import data.model.Team
 
@@ -22,10 +21,6 @@ class QuarterFinal : KnockoutStage {
     }
 
     override fun getMatches(): List<Match> {
-        TODO("Not yet implemented")
-    }
-
-    override fun generateFixtures() {
         TODO("Not yet implemented")
     }
 

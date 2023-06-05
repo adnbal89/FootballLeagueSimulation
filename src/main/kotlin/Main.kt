@@ -1,23 +1,41 @@
 import data.model.Team
 import domain.stage.GroupRound
-import domain.util.DrawPot
+import domain.util.GroupNames
 
 fun main() {
-    var tempTeamList = Team.teamList.toMutableList()
+    val tempTeamList = Team.teamList.toMutableList()
     val groupStage = GroupRound()
     groupStage.simulateDraw(tempTeamList)
-    groupStage.generateFixtures()
+    groupStage.generateGroupFixtures()
 
 
-    groupStage.getGroups().forEach {group ->
+    groupStage.getGroups().forEach { group ->
         println(group.name)
         group.getFixture().getMatches().forEach { match ->
             println("${match.homeTeam.name} - ${match.awayTeam.name}")
         }
     }
 
+    println()
+    groupStage.getFixtureByGroupName(GroupNames.B.name).getMatches().forEach {
+        println(it.homeTeam.name + " - " + it.awayTeam.name)
+    }
+
+    println()
+
+    groupStage.simulate()
+    groupStage.getQualifiedTeams().forEach {
+        println(it.name)
+    }
 
 
+    println()
+    groupStage.getGroups().forEach {
+        it.getStanding().getTeamStandings().forEach { ts ->
+            println("${ts.team.name}  -  ${ts.winCount} ")
+        }
+        println()
+    }
 
 
     /*val groupCount = 5
@@ -92,7 +110,7 @@ fun main() {
 
     //ON TO QUALIFYING STAGE
     val last16QualifiersList = mutableListOf<Team>()
-    val QuarterFİnalQualifiersList = mutableListOf<Team>()
+    val QuarterFinalQualifiersList = mutableListOf<Team>()
     val SemiFinalQualifiersList = mutableListOf<Team>()
     val FinalQualifiersList = mutableListOf<Team>()
 

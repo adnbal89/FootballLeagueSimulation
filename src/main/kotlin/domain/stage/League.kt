@@ -1,6 +1,3 @@
 package domain.stage
 
-interface League {
-    val name: String
-    val rounds: MutableList<Stage>
-}
+abstract class League(open val name: String, open val rounds: MutableList<Stage>)
