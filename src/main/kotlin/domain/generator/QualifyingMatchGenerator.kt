@@ -1,11 +1,13 @@
-package domain.util
+package domain.generator
 
+import data.model.Fixture
 import data.model.Match
 import data.model.Score
 import data.model.Team
 import java.time.LocalDateTime
 
 class QualifyingMatchGenerator {
+    private lateinit var fixture: Fixture
 
     fun generateMatches(list: List<Team>): List<Match> {
         val matchList = mutableListOf<Match>()

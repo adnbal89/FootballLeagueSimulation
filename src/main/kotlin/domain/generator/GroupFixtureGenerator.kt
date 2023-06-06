@@ -1,4 +1,4 @@
-package domain.util
+package domain.generator
 
 import data.model.Fixture
 import data.model.Match
@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 
 class GroupFixtureGenerator : FixtureGenerator {
     private lateinit var fixture: Fixture
-    override fun generateFixture(list: List<Team>): Fixture {
+    override fun generateFixture(list: List<Team>, isFinalStage :Boolean): Fixture {
         fixture = Fixture()
 
         list.forEachIndexed { index1, team1 ->

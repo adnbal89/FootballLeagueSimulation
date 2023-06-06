@@ -3,24 +3,26 @@ package domain.stage
 import data.model.Fixture
 import data.model.Match
 import data.model.Team
+import domain.draw.DrawPot
 import domain.runner.MatchRunner
 import domain.util.Constants
-import domain.util.DrawPot
-import domain.util.GroupFixtureGenerator
+import domain.generator.GroupFixtureGenerator
 import domain.util.GroupNames
 
-class GroupRound : GroupStage {
+class GroupRound(
+    private val fixtureGenerator: GroupFixtureGenerator,
+    private val matchRunner: MatchRunner,
+    private val drawPot: DrawPot<Group>
+) : GroupStage {
     private lateinit var groups: List<Group>
-    private val drawPot: DrawPot = DrawPot()
-    private val matchRunner: MatchRunner = MatchRunner()
-    private lateinit var fixtureGenerator: GroupFixtureGenerator
 
     override fun getGroups(): List<Group> {
         return groups
     }
 
     override fun simulateDraw(teamList: List<Team>) {
-        this.groups = drawPot.simulateDraw(teamList, Constants.GROUP_COUNT, Constants.TEAM_COUNT_PER_GROUP)
+        this.groups =
+            drawPot.simulateDraw(teamList, Constants.GROUP_COUNT, Constants.TEAM_COUNT_PER_GROUP)
     }
 
     override fun simulate() {
@@ -40,7 +42,7 @@ class GroupRound : GroupStage {
     override fun isCompleted(): Boolean {
         var isCompleted = true
 
-        //check if every team has played max matches in its group
+        //check if every team has played max num of matches in its group
         groups.forEach { group ->
             group.getStanding().getTeamStandings().forEach { teamStanding ->
                 isCompleted = (teamStanding.playedMatchesCount < (Constants.TEAM_COUNT_PER_GROUP - 1) * 2)
@@ -50,19 +52,13 @@ class GroupRound : GroupStage {
     }
 
     override fun getMatches(): List<Match> {
-        val matchList = arrayListOf<Match>()
-        groups.forEach {
-            matchList.addAll(it.getFixture().getMatches())
-        }
-        return matchList
+        return groups.flatMap { it.getFixture().getMatches() }
     }
 
     override fun generateGroupFixtures() {
-        fixtureGenerator = GroupFixtureGenerator()
-
         groups.forEach {
             val teams = it.getTeams()
-            val fixture = fixtureGenerator.generateFixture(teams)
+            val fixture = fixtureGenerator.generateFixture(teams, isFinalStage = false)
             it.setFixture(fixture)
         }
     }

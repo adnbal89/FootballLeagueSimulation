@@ -1,6 +1,6 @@
 package data.model
 
-class QualifyingStage(private val name: String) {
+class QualificationPairing() {
 
     private val teams: MutableList<Team> = mutableListOf()
     private lateinit var fixture: Fixture
@@ -23,10 +23,6 @@ class QualifyingStage(private val name: String) {
 
     fun setFixture(fixture: Fixture) {
         this.fixture = fixture
-    }
-
-    fun getStageName(): String {
-        return name
     }
 
 }

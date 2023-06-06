@@ -3,7 +3,7 @@ package domain.initializer
 import data.model.Standing
 import data.model.Team
 import domain.stage.Group
-import domain.util.GroupFixtureGenerator
+import domain.generator.GroupFixtureGenerator
 
 class GroupInitializer :
     Initializer<Group> {
@@ -19,7 +19,7 @@ class GroupInitializer :
 
         matchGenerator = GroupFixtureGenerator()
 
-        val fixture = matchGenerator.generateFixture(teamList)
+        val fixture = matchGenerator.generateFixture(teamList, isFinalStage = false)
 
         teamList.forEach {
             group.addTeam(it)

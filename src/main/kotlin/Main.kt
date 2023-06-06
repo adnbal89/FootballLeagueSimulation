@@ -1,10 +1,23 @@
 import data.model.Team
+import domain.draw.GroupDrawPot
+import domain.draw.KnockoutDrawPot
+import domain.generator.GroupFixtureGenerator
+import domain.league.ChampionsLeague
+import domain.runner.MatchRunner
 import domain.stage.GroupRound
+import domain.stage.PlayOffRound
+import domain.util.Constants
 import domain.util.GroupNames
+import domain.util.QualifyingNames
 
 fun main() {
     val tempTeamList = Team.teamList.toMutableList()
-    val groupStage = GroupRound()
+    val championsLeague = ChampionsLeague()
+    val fixtureGenerator = GroupFixtureGenerator()
+    val matchRunner = MatchRunner()
+    val drawPot = GroupDrawPot()
+
+    val groupStage = GroupRound(fixtureGenerator, matchRunner, drawPot)
     groupStage.simulateDraw(tempTeamList)
     groupStage.generateGroupFixtures()
 
@@ -28,145 +41,75 @@ fun main() {
         println(it.name)
     }
 
-
+    val playOffRound = PlayOffRound()
+    playOffRound.drawKnockoutPairings(
+        groupStage.getQualifiedTeams(),
+        Constants.KNOCKOUT_LAST16_PAIR_COUNT,
+        Constants.TEAM_COUNT_PER_KNOCKOUT
+    )
+    playOffRound.generateKnockoutFixtures(isFinalStage = false)
     println()
-    groupStage.getGroups().forEach {
-        it.getStanding().getTeamStandings().forEach { ts ->
-            println("${ts.team.name}  -  ${ts.winCount} ")
-        }
-        println()
+
+    playOffRound.getMatches().forEach {
+        println(it.homeTeam.name + " - " + it.awayTeam.name)
     }
-
-
-    /*val groupCount = 5
-
-    val dateAdvancer = DateAdvancer(Calendar.getInstance().time)
-    println(dateAdvancer.advanceDate(2))
-
-    val matchRunner = MatchRunner()
-
-    var tempTeamList = Team.teamList.toMutableList()
-
-    val groupInitializer = GroupInitializer()
-    val groupList = mutableListOf<Group>()
-
-    //GROUP CREATION
-    GroupNames.values().take(Constants.GROUP_COUNT).forEach {
-        groupInitializer.setTeamList(tempTeamList.take(4))
-        val group = groupInitializer.initialize(it.name)
-        groupList.add(group)
-        tempTeamList.removeAll(tempTeamList.take(4))
-    }
-
-
-    //GROUP TEAM OVERVIEW
-    println(groupList.forEach { group ->
-        println()
-        println(group.name)
-        group.getTeams().forEach { team ->
-            println(team.name)
-        }
-    })
-
-
-    //GROUP STANDING OVERVIEW BEFORE MATCHES PLAYED
-    groupList.forEach {
-        println()
-        println(it.name)
-        it.getStanding().getTeamStandings().forEach { ts ->
-            println("${ts.team.nameShort}  -  ${ts.playedMatchesCount} - ${ts.winCount} - ${ts.drawCount} - ${ts.lostCount} - ${ts.forGoalsCount} - ${ts.againstGoalsCount} - ${ts.goalDifference} - ${ts.points}")
-
-        }
-    }
-
-    //GROUP FIXTURE OVERVIEW
-    groupList.forEach { group ->
-        println()
-        println(group.name)
-        group.getFixture().getMatches().forEach {
-            println("${it.homeTeam.name} - ${it.awayTeam.name} ")
-        }
-    }
-
-    //GROUP MATCHES RUNNING
-    groupList.forEach { group ->
-        group.getFixture().getMatches().forEach { match ->
-            match.score = matchRunner.run(match).score
-            group.getStanding()
-                .updateMatchResult(match.homeTeam, match.awayTeam, match.score.homeGoalCount, match.score.awayGoalCount)
-        }
-    }
-
-    //GROUP STANDING OVERVIEW AFTER MATCHES PLAYED
-    groupList.forEach {
-        println()
-        println(it.name)
-        it.getStanding().getTeamStandings().forEach { ts ->
-            println("${ts.team.nameShort}  -  ${ts.playedMatchesCount} - ${ts.winCount} - ${ts.drawCount} - ${ts.lostCount} - ${ts.forGoalsCount} - ${ts.againstGoalsCount} - ${ts.goalDifference} - ${ts.points}")
-
-        }
-    }
-
-
-    //ON TO QUALIFYING STAGE
-    val last16QualifiersList = mutableListOf<Team>()
-    val QuarterFinalQualifiersList = mutableListOf<Team>()
-    val SemiFinalQualifiersList = mutableListOf<Team>()
-    val FinalQualifiersList = mutableListOf<Team>()
-
-    groupList.forEach { group ->
-        val qualifiedTeam1 = group.getStanding().getTeamStandings()[0].team
-        val qualifiedTeam2 = group.getStanding().getTeamStandings()[1].team
-
-        last16QualifiersList.add(qualifiedTeam1)
-        last16QualifiersList.add(qualifiedTeam2)
-    }
+    playOffRound.simulate()
     println()
-    println("Qualifiers")
-    last16QualifiersList.forEach {
+    playOffRound.getQualifiedTeams().forEach {
         println(it.name)
     }
 
-    val qualifyingInitializer = QualifyingInitializer()
-    qualifyingInitializer.setTeamList(last16QualifiersList)
-    val qualifyingStage = qualifyingInitializer.initialize(QualifyingNames.Last_16.name)
-
     println()
-    println(qualifyingStage.getStageName())
-    qualifyingStage.getFixture().getMatches().forEach {
-        println(" ${it.homeTeam.name}  -  ${it.awayTeam.name}")
 
-    }
-
-    groupList.forEach { group ->
-        qualifyingStage.getFixture().getMatches().forEach { match ->
-            match.score = matchRunner.run(match).score
-        }
-    }
-
+    val playOffRoundQuarterFinal = PlayOffRound()
+    playOffRoundQuarterFinal.drawKnockoutPairings(
+        playOffRound.getQualifiedTeams(),
+        Constants.KNOCKOUT_QUARTER_FINAL_PAIR_COUNT,
+        Constants.TEAM_COUNT_PER_KNOCKOUT
+    )
+    playOffRoundQuarterFinal.generateKnockoutFixtures(isFinalStage = false)
     println()
-    println("Scores")
-
-    var tempQualifierMatches = qualifyingStage.getFixture().getMatches().toMutableList()
-    val qualifierCalculator = QualifierCalculator()
-    var qualifiedTeams = mutableListOf<Team>()
-
-    while (tempQualifierMatches.isNotEmpty()) {
-
-        qualifiedTeams.add(qualifierCalculator.calculateQualifiedTeam(tempQualifierMatches.take(2)))
-        tempQualifierMatches.removeAll(tempQualifierMatches.take(2))
+    playOffRoundQuarterFinal.getMatches().forEach {
+        println(it.homeTeam.name + " - " + it.awayTeam.name)
     }
-
-    qualifyingStage.getFixture().getMatches().forEach { match ->
-        println("${match.homeTeam.name} - ${match.awayTeam.name} : ${match.score.homeGoalCount} - ${match.score.awayGoalCount}")
-    }
-
+    playOffRoundQuarterFinal.simulate()
     println()
-    println("Qualified to Quarter Finals")
-    qualifiedTeams.forEach { team ->
-        println("${team.name} ")
-
+    playOffRoundQuarterFinal.getQualifiedTeams().forEach {
+        println(it.name)
     }
 
-*/
+
+    val playOffRoundSemiFinal = PlayOffRound()
+    playOffRoundSemiFinal.drawKnockoutPairings(
+        playOffRoundQuarterFinal.getQualifiedTeams(),
+        Constants.KNOCKOUT_SEMI_FINAL_PAIR_COUNT,
+        Constants.TEAM_COUNT_PER_KNOCKOUT
+    )
+    playOffRoundSemiFinal.generateKnockoutFixtures(isFinalStage = false)
+    println()
+    playOffRoundSemiFinal.getMatches().forEach {
+        println(it.homeTeam.name + " - " + it.awayTeam.name)
+    }
+    playOffRoundSemiFinal.simulate()
+    println()
+    playOffRoundSemiFinal.getQualifiedTeams().forEach {
+        println(it.name)
+    }
+
+    val playOffFinal = PlayOffRound()
+    playOffFinal.drawKnockoutPairings(
+        playOffRoundSemiFinal.getQualifiedTeams(),
+        Constants.KNOCKOUT_FINAL_PAIR_COUNT,
+        Constants.TEAM_COUNT_PER_KNOCKOUT
+    )
+    playOffFinal.generateKnockoutFixtures(isFinalStage = true)
+    println()
+    playOffFinal.getMatches().forEach {
+        println(it.homeTeam.name + " - " + it.awayTeam.name)
+    }
+    playOffFinal.simulate()
+    println()
+    playOffFinal.getMatches().forEach {
+        println(it.score)
+    }
 }

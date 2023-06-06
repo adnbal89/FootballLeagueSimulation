@@ -1,30 +1,27 @@
 package domain.league
 
+import data.model.Team
+import domain.draw.GroupDrawPot
+import domain.generator.GroupFixtureGenerator
+import domain.runner.MatchRunner
 import domain.stage.*
 import domain.stage.League
 
-class ChampionsLeague(override val name: String, override val rounds: MutableList<Stage>) : League(name, rounds) {
-    private lateinit var preliminaryRound: PreliminaryRound
-    private lateinit var prePlayOffRound: PlayOffRound
-    private lateinit var groupRound: GroupRound
-    private lateinit var last16Round: PlayOffRound
-    private lateinit var quarterFinal: QuarterFinal
-    private lateinit var semiFinal: SemiFinal
-    private lateinit var final: Final
-    private lateinit var stagesList: List<Stage>
-    fun createChampionsLeagueRounds() {
-        preliminaryRound = PreliminaryRound()
-        prePlayOffRound = PlayOffRound(arrayListOf())
-        groupRound = GroupRound()
-        last16Round = PlayOffRound(arrayListOf())
-        quarterFinal = QuarterFinal()
-        semiFinal = SemiFinal()
-        final = Final()
-        stagesList =
-            arrayListOf(preliminaryRound, prePlayOffRound, groupRound, last16Round, quarterFinal, semiFinal, final)
+class ChampionsLeague : League() {
+    private val tempTeamList = Team.teamList.toMutableList()
+    private val championsLeague = ChampionsLeague()
+    private val fixtureGenerator = GroupFixtureGenerator()
+    private val matchRunner = MatchRunner()
+    private val drawPot = GroupDrawPot()
 
-        //Create default rounds if not specified.
-        if (rounds.size == 0)
-            rounds.addAll(stagesList)
-    }
+
+    private val preliminaryRound: KnockoutStage = PlayOffRound()
+    private val prePlayOffRound: KnockoutStage = PlayOffRound()
+    private val groupRound: GroupStage = GroupRound(fixtureGenerator, matchRunner, drawPot)
+    private val last16Round: KnockoutStage = PlayOffRound()
+    private val quarterFinal: KnockoutStage = PlayOffRound()
+    private val semiFinal: KnockoutStage = PlayOffRound()
+    private val final: KnockoutStage = PlayOffRound()
+
+
 }
