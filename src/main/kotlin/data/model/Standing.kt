@@ -20,9 +20,11 @@ class Standing {
         }
     }
 
-    fun updateMatchResult(homeTeam: Team, awayTeam: Team, homeGoals: Int, awayGoals: Int) {
-        val homeTeamStanding = findTeamStanding(homeTeam)
-        val awayTeamStanding = findTeamStanding(awayTeam)
+    fun updateStandingByMatchScore(match: Match) {
+        val homeTeamStanding = findTeamStanding(match.homeTeam)
+        val awayTeamStanding = findTeamStanding(match.awayTeam)
+        val homeGoals = match.score.homeGoalCount
+        val awayGoals = match.score.awayGoalCount
 
         homeTeamStanding.playedMatchesCount++
         awayTeamStanding.playedMatchesCount++

@@ -7,8 +7,6 @@ import data.model.Team
 interface Stage {
     fun simulate()
     fun isCompleted(): Boolean
-    fun getMatches(): List<Match>
-    fun getQualifiedTeams(): List<Team>
     fun simulateDraw(teamList: List<Team>) // draw simulation
 
 }

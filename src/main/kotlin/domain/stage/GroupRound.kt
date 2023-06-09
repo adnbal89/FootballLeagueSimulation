@@ -10,7 +10,6 @@ import domain.generator.GroupFixtureGenerator
 import domain.util.GroupNames
 
 class GroupRound(
-    private val fixtureGenerator: GroupFixtureGenerator,
     private val matchRunner: MatchRunner,
     private val drawPot: DrawPot<Group>
 ) : GroupStage {
@@ -29,11 +28,8 @@ class GroupRound(
         groups.forEach { group ->
             group.getFixture().getMatches().forEach { match ->
                 match.score = matchRunner.run(match).score
-                group.getStanding().updateMatchResult(
-                    homeTeam = match.homeTeam,
-                    awayTeam = match.awayTeam,
-                    homeGoals = match.score.homeGoalCount,
-                    awayGoals = match.score.awayGoalCount
+                group.getStanding().updateStandingByMatchScore(
+                    match = match
                 )
             }
         }
@@ -51,34 +47,4 @@ class GroupRound(
         return isCompleted
     }
 
-    override fun getMatches(): List<Match> {
-        return groups.flatMap { it.getFixture().getMatches() }
-    }
-
-    override fun generateGroupFixtures() {
-        groups.forEach {
-            val teams = it.getTeams()
-            val fixture = fixtureGenerator.generateFixture(teams, isFinalStage = false)
-            it.setFixture(fixture)
-        }
-    }
-
-    override fun getQualifiedTeams(): List<Team> {
-        val qualifiedTeams = arrayListOf<Team>()
-        groups.forEach { group ->
-            group.getStanding().getTeamStandings().take(2).forEach { teamStanding ->
-                qualifiedTeams.add(teamStanding.team)
-            }
-        }
-
-        return qualifiedTeams
-    }
-
-    override fun getFixtureByGroupName(groupName: String): Fixture {
-        return groups.first { it.name == groupName }.getFixture()
-    }
-
-    override fun getMatchesByGroup(groupName: GroupNames): List<Match> {
-        return groups.first { it.name == groupName.name }.getFixture().getMatches()
-    }
 }

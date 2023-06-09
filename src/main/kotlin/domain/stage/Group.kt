@@ -1,13 +1,17 @@
 package domain.stage
 
 import data.model.Fixture
+import data.model.Match
 import data.model.Standing
 import data.model.Team
+import domain.generator.FixtureGenerator
+import domain.generator.GroupFixtureGenerator
 
 class Group(val name: String) {
     private var teams: MutableList<Team> = mutableListOf()
     private lateinit var standing: Standing
     private lateinit var fixture: Fixture
+    private val fixtureGenerator: FixtureGenerator = GroupFixtureGenerator()
 
     fun addTeam(team: Team) {
         teams.add(team)
@@ -43,5 +47,17 @@ class Group(val name: String) {
 
     fun getGroupName(): String {
         return name
+    }
+
+    fun setGroupFixture() {
+        this.setFixture(fixtureGenerator.generateFixture(teams, false))
+    }
+
+    fun getQualifiedTeams(): List<Team> {
+        return standing.getTeamStandings().take(2).map { it.team }
+    }
+
+    fun getMatches(): List<Match>{
+        return fixture.getMatches()
     }
 }
